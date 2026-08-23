@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple, clean, and beautiful Temperature & Unit Converter Web App. Convert Temperature, Length, and Weight units in real time.">
+    <title>EasyConvert - Temperature & Unit Converter</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>EasyConvert</h1>
+            <p class="subtitle">Convert units in real time instantly</p>
+        </header>
+
+        <!-- Main Converter Card -->
+        <section class="converter-card" aria-label="Unit Converter Form">
+            <!-- Category Tabs Selector -->
+            <div class="category-tabs" role="tablist">
+                <button id="tab-temperature" class="tab-btn active" role="tab" aria-selected="true" aria-controls="converter-inputs" data-category="temperature">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Temperature
+                </button>
+                <button id="tab-length" class="tab-btn" role="tab" aria-selected="false" aria-controls="converter-inputs" data-category="length">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 3v18M19 3v18M5 12h14M5 7h7M5 17h7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Length
+                </button>
+                <button id="tab-weight" class="tab-btn" role="tab" aria-selected="false" aria-controls="converter-inputs" data-category="weight">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 12v10H4V12M12 2v10M12 2L8 6M12 2l4 4M2 12h20" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Weight
+                </button>
+            </div>
+
+            <!-- Converter Inputs Grid -->
+            <div id="converter-inputs" class="converter-inputs-grid">
+                <!-- Source Input Group -->
+                <div class="input-group">
+                    <label for="input-value">Convert From</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="input-value" placeholder="Enter value" step="any" autofocus>
+                        <select id="select-from-unit" aria-label="Select source unit"></select>
+                    </div>
+                </div>
+
+                <!-- Swap Button Controller -->
+                <div class="swap-controller">
+                    <button id="btn-swap" class="btn-swap" aria-label="Swap units" title="Swap units">
+                        <svg class="swap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 4l4 4-4 4M21 8H9M7 20l-4-4 4-4M3 16h12" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Destination Input Group -->
+                <div class="input-group">
+                    <label for="output-value">Converted To</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="output-value" placeholder="Result" readonly>
+                        <select id="select-to-unit" aria-label="Select target unit"></select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Error message display -->
+            <div id="error-message" class="error-message" role="alert" aria-live="polite"></div>
+        </section>
+
+        <!-- History Section -->
+        <section class="history-section" aria-label="Conversion History">
+            <div class="history-header">
+                <h2>Recent Conversions</h2>
+                <button id="btn-clear-history" class="btn-clear" disabled>Clear History</button>
+            </div>
+            <div id="history-container" class="history-container">
+                <ul id="history-list" class="history-list">
+                    <!-- History items will be dynamically injected here -->
+                </ul>
+                <div id="empty-history-msg" class="empty-history-msg">
+                    No recent conversions. Your conversions will appear here.
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>EasyConvert &copy; 2026. Made with Vanilla JavaScript.</p>
+        </footer>
+    </main>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
